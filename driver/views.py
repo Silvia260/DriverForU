@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def index(request):
-    drivers = Driver.objects.all()[:4]
+    drivers = Driver.objects.filter(featured=True)
 
     return render(request,'index.html',{"drivers":drivers})
 

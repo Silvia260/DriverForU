@@ -38,9 +38,81 @@
               <p class="mb-4">Filter your requirements below to find your best pick.</p>
             </div>
 
+<style>
+
+  ul.ks-cboxtags {
+      list-style: none;
+      padding: 20px;
+  }
+  ul.ks-cboxtags li{
+    display: inline;
+  }
+  ul.ks-cboxtags li label{
+      display: inline-block;
+      background-color: rgba(255, 255, 255, .9);
+      border: 2px solid rgba(139, 139, 139, .3);
+      color: #adadad;
+      border-radius: 25px;
+      white-space: nowrap;
+      margin: 3px 0px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: all .2s;
+  }
+
+  ul.ks-cboxtags li label {
+      padding: 8px 12px;
+      cursor: pointer;
+  }
+
+  ul.ks-cboxtags li label::before {
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: 12px;
+      padding: 2px 6px 2px 2px;
+      content: "\f067";
+      transition: transform .3s ease-in-out;
+  }
+
+  ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+      content: "\f00c";
+      transform: rotate(-360deg);
+      transition: transform .3s ease-in-out;
+  }
+
+  ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+      border: 2px solid #1bdbf8;
+      background-color: #12bbd4;
+      color: #fff;
+      transition: all .2s;
+  }
+
+  ul.ks-cboxtags li input[type="checkbox"] {
+    display: absolute;
+  }
+  ul.ks-cboxtags li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+  }
+  ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+    border: 2px solid #e9a1ff;
+  }
+</style>
+
+
+
             <div class="row justify-content-center">
 
-              <div class="col-lg-8 ">
+              <div class=" ">
 
                 <!-- <form class="navbar-form" role="search" action="{% url 'search_results' %}">
                   <div class="input-group">
@@ -51,10 +123,15 @@
 
                 <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
-                  <p class="text-center  text-black">Rate</p>
+                  <p class="text-center bold text-black" style="margin-bottom: 0px;"><strong>Rate</strong></p>
 
                     <div class="text-center">
 
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rate" id="inlineRadio1" value=200>
+                        <label class="form-check-label" for="inlineRadio1">200</label>
+                      </div>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="rate" id="inlineRadio1" value=400>
                       <label class="form-check-label" for="inlineRadio1">400</label>
@@ -68,14 +145,23 @@
                       <label class="form-check-label" for="inlineRadio2">600</label>
                     </div>
                     <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="rate" id="inlineRadio3" value=700>
+                      <label class="form-check-label" for="inlineRadio2">700</label>
+                    </div>
+                    <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="rate" id="inlineRadio4" value=800>
                       <label class="form-check-label" for="inlineRadio2">800</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="rate" id="inlineRadio4" value=900>
+                      <label class="form-check-label" for="inlineRadio2">900</label>
                     </div>
 
                     </div>
 
                     <br>
-                  <p class="text-center text-black">Location</p>
+                  <p class="text-center text-black" style="margin-bottom: 0px;"><strong>Location</strong></p>
 
                     <div class="text-center">
 
@@ -114,101 +200,51 @@
 
                     </div>
 
-                    <p class="text-center text-black">Professional Skills</p>
+                    <p class="text-center text-black" style="margin-bottom: 0px;"><strong>Professional Skills</strong> </p>
+                    <!-- Test CSS  -->
+                    <div class="container">
+                      <ul class="ks-cboxtags">
+                        <li><input type="checkbox" id="checkboxOne" name="skill" value="Industrial Construction and Agricultural Plants Equipment"><label for="checkboxOne">Industrial Construciton and Agricultural Plants Equipment</label></li>
+                        <li><input type="checkbox" id="checkboxTwo" name="skill" value="Special Driving License for Persons with Disability (PWD)" checked><label for="checkboxTwo">Special Driving License for Persons with Disability (PWD)</label></li>
+                        <li><input type="checkbox" id="checkboxThree" name="skill" value="D3 Large Bus" checked><label for="checkboxThree">D3 Large Bus</label></li>
+                        <li><input type="checkbox" id="checkboxFour" name="skill" value="D2 Mini-bus"><label for="checkboxFour">D2 Mini-bus</label></li>
+                        <li><input type="checkbox" id="checkboxFive" name="skill" value="D1 Van"><label for="checkboxFive">D1 Van</label></li>
+                        <li><input type="checkbox" id="checkboxSix" name="skill"  value="CD Heavy Goods Vehicle for Transportation of Hazardous Materials" checked><label for="checkboxSix">CD Heavy Goods Vehicle For Transportation of Hazardous Materials</label></li>
+                        <li><input type="checkbox" id="checkboxSeven" name="skill" value="CE Heavy Truck With Trailer"><label for="checkboxSeven">Ce Heavy Truck With Trailer</label></li>
+                        <li><input type="checkbox" id="checkboxEight" name="skill" value="C Medium Truck"><label for="checkboxEight">C Medium Truck</label></li>
+                        <li><input type="checkbox" id="checkboxNine" name="skill" value="C1 Light Truck"><label for="checkboxNine">C1 Light Truck</label></li>
+                        <li><input type="checkbox" id="checkboxTen" name="skill" value="B3 Professional"><label for="checkboxTen">B3 Professional</label></li>
+                        <li class="ks-selected"><input type="checkbox" name="skill" id="checkboxEleven" value="B2 Light Vehicle Automatic"><label for="checkboxEleven">B2 Light Vehicle Automatic</label></li>
+                        <li><input type="checkbox" id="checkboxTwelve" name="skill" value="B1 Light Vehicle"><label for="checkboxTwelve">B1 Light Vehicle</label></li>
+                        <li><input type="checkbox" id="checkboxThirteen" name="skill" value="A3 Motorcycle Taxi Couriers"><label for="checkboxThirteen">A3 Motorcycle Taxi Couriers</label></li>
+                        <li><input type="checkbox" id="checkboxFourteen" name="skill" value="A2 Light Motorcycle"><label for="checkboxFourteen">A2 Light Motorcycle</label></li>
+                      </ul>
 
-                                        <div class="text-center">
+                    </div>
 
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="Industrial Construction and Agricultural Plants Equipment" id="flexCheckDefault">
-                                          <label class="form-check-label" for="flexCheckDefault">
-                                            Industrial Construction and Agricultural Plants Equipment
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"   name="skill" value="Special Driving License for Persons with Disability (PWD)" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            Special Driving License for Persons with Disability (PWD)
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="D3 Large Bus" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            D3 Large Bus
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="D2 Mini-bus" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            D2 Mini-bus
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="D1 Van" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            D1 Van
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="CD Heavy Goods Vehicle For Transportation of Hazardous Materials" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            CD Heavy Goods Vehicle For Transportation of Hazardous Materials
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="Ce Heavy Truck With Trailer" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            CE Heavy Truck With Trailer
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="C Medium Truck" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            C Medium Truck
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="C1 Light Truck" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            C1 Light Truck
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="B3 Professional" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            B3 Professional
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="B2 Light Vehicle Automatic" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            B2 Light Vehicle Automatic
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="B1 Light Vehicle" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            B1 Light Vehicle
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="A3 Motorcycle Taxi Couriers" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            A3 Motorcycle Taxi Couriers
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="checkbox"  name="skill" value="A2 Light Motorcycle" id="flexCheckChecked">
-                                          <label class="form-check-label" for="flexCheckChecked">
-                                            A2 Light Motorcycle
-                                          </label>
-                                        </div>
+                    <!-- End CSS  -->
 
-                                      </div>
 
-                                        <div class="input-group">
-                                          <input type="submit" class="form-control" value="Search for Driver">
-                                        </div>
-                                    </form>
+
+
+
+
+<div class="row">
+
+    <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <div class="input-group">
+              <input type="submit" class="btn btn-primary form-control" value="Search for Driver">
+        </div>
+      </div>
+    <div class="col-lg-4"></div>
+</div>
+
+</form>
+
+
+
+
 
 
 

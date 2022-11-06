@@ -56,6 +56,11 @@
                   <ul class="dropdown">
                     <li><a href="/accounts/password/change" class="nav-link">Change Password</a></li>
                     <li><a href="order_history/{{user.id}}" class="nav-link">Order History</a></li>
+                    {% if user.is_superuser %}
+                    <li><a href="/admin" class="nav-link">Dashboard</a></li>
+                    {% else %}
+
+                    {%endif%}
 
                   </ul>
 

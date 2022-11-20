@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns=[
     url(r'^$',views.index,name='index'),
     url(r'^about',views.about,name='about'),
+    url(r'^dashboard',views.dashboard,name='dashboard'),
     url(r'^contact',views.contact,name='contact'),
     url(r'^drivers',views.drivers,name='drivers'),
     url(r'^pricing',views.pricing,name='pricing'),

@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^accounts/',include('registration.backends.simple.urls')),
     url(r'^logout/$',views.logout, {"next_page":'/'},name="logout"),
     url('paypal/', include('paypal.standard.ipn.urls')),
+
 ]

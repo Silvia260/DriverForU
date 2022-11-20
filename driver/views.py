@@ -15,11 +15,24 @@ from django.views.decorators.csrf import csrf_exempt
 def index(request):
     drivers = Driver.objects.filter(featured=True)
 
+    # drivers_total = Driver.objects.count()
+
+    # print(drivers_total)
+
     return render(request,'index.html',{"drivers":drivers})
 
 def about(request):
 
+
     return render(request,'about.html')
+
+def dashboard(request):
+    drivers_total = Driver.objects.count()
+    locations_total = Location.objects.count()
+    skills_total = pro_skills.objects.count()
+
+
+    return render(request,'dashboard.html',{"drivers_total":drivers_total,"locations_total":locations_total, "skills_total":skills_total})
 
 def contact(request):
     if request.method == 'POST':

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.models import LogEntry, ADDITION, CHANGE
-from .models import pro_skills, Driver, Location, Rate, Report
+from .models import pro_skills, Driver, Location, Rate, Report, AllLogin
 
 # Register your models here.
 admin.site.register(pro_skills)
@@ -9,6 +9,8 @@ admin.site.register(Location)
 admin.site.register(Driver)
 admin.site.register(Rate)
 admin.site.register(Report)
+admin.site.register(AllLogin)
+
 
 #Register LogEntry
 class MoniterLog(admin.ModelAdmin):

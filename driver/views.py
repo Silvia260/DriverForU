@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
-from django.contrib.auth.decorators import login_required
-from .models import pro_skills, Location, Driver, Rate, Report
+from django.contrib.auth.decorators import login_required,user_passes_test
+from .models import pro_skills, Location, Driver, Rate, Report, AllLogin
 from .forms import ContactForm, FilterDrivers, BookDriver
 from django.core.mail import send_mail, BadHeaderError
+
+from django.contrib.auth.models import User
 
 from django.conf import settings
 from decimal import Decimal
@@ -11,9 +13,14 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.views.decorators.csrf import csrf_exempt
 
 
+
 # Create your views here.
 def index(request):
     drivers = Driver.objects.filter(featured=True)
+
+    if request.user.is_authenticated:
+        AllLogin.objects.create(user=request.user)
+
 
     # drivers_total = Driver.objects.count()
 
@@ -26,13 +33,19 @@ def about(request):
 
     return render(request,'about.html')
 
+@user_passes_test(lambda u: u.is_superuser)
 def dashboard(request):
     drivers_total = Driver.objects.count()
     locations_total = Location.objects.count()
     skills_total = pro_skills.objects.count()
 
+    users = User.objects.all()
+    user = request.user
 
-    return render(request,'dashboard.html',{"drivers_total":drivers_total,"locations_total":locations_total, "skills_total":skills_total})
+    drivers = Driver.objects.all()
+
+
+    return render(request,'dashboard.html',{"drivers_total":drivers_total,"locations_total":locations_total, "skills_total":skills_total,"users":users,"drivers":drivers,"user":user})
 
 def contact(request):
     if request.method == 'POST':
